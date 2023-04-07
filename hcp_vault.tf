@@ -33,6 +33,6 @@ resource "vault_ldap_auth_backend" "ldap" {
 }*/
 
 
-resource "vault_namespace" "dummy" {
-  path = "dummy"
+resource "vault_namespace" "dumdum" {
+  path = "dumdum"
 }
