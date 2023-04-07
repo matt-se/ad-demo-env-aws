@@ -18,13 +18,6 @@ variable tfc_workspace {
   default = "ad-demo-env-aws"
 }
 
-variable hcp_client_id {
-  default = "NesRmeMDPDtabpQ8VWAvYLVBZ8ad77CN"
-}
-
-variable hcp_client_secret {
-  default = "replace me!"
-}
 
 variable hcp_hvn_cidr {
   default = "172.25.16.0/20"
