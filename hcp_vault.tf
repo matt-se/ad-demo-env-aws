@@ -13,9 +13,9 @@ output "hcp_valut_public_url" {
 
 resource "hcp_vault_cluster_admin_token" "example" {
   cluster_id = hcp_vault_cluster.example.cluster_id
-  sensitive  = true
 }
 
 output "hcp_vault_cluster_admin_token" {
   value = hcp_vault_cluster_admin_token.example.token
+  sensitive  = true
 }
