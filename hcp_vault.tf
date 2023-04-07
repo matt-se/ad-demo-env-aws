@@ -23,7 +23,7 @@ output "hcp_vault_cluster_admin_token" {
 
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
-    url         =  aws_directory_service_directory.example.access_url
+    url         =  aws_directory_service_directory.ad.access_url
     userdn      = "OU=Users,OU=Accounts,DC=example,DC=org"
     userattr    = "sAMAccountName"
     upndomain   = "EXAMPLE.ORG"
