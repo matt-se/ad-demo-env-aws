@@ -7,7 +7,7 @@ resource "hcp_vault_cluster" "example" {
 }
 
 output "hcp_vault_public_url" {
-  value = hcp_vault_cluster.example.public_endpoint
+  value = hcp_vault_cluster.example.vault_public_endpoint_url
 }
 
 
