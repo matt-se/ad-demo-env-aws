@@ -14,6 +14,30 @@ resource "aws_directory_service_directory" "ad" {
   }
 }
 
+
+resource "ad_ou" "o" { 
+    name = "top-org"
+    path = "dc=corp,dc=notexample,dc=com"
+    description = "OU for tests"
+    protected = false
+}
+
+resource "ad_ou" "groupz" {
+  name        = "groupz"
+  path        = ad_ou.o.path
+  description = ad_ou.o.description
+  protected   = false
+}
+
+
+
+
+
+
+
+
+
+
 output "ad_dns_ip" {
   value = aws_directory_service_directory.ad.dns_ip_addresses
 }
@@ -33,3 +57,6 @@ output "ad_sg" {
 output "ad_url" {
   value = aws_directory_service_directory.ad.access_url
 }
+
+
+

@@ -29,3 +29,9 @@ provider "vault" {
   address = hcp_vault_cluster.example.vault_public_endpoint_url
   namespace = "admin"
 }
+
+provider "ad" {
+  winrm_hostname = aws_directory_service_directory.ad.access_url
+  winrm_username = "Administrator"
+  winrm_password = "SuperSecretPassw0rd"
+}
