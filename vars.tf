@@ -1,6 +1,6 @@
-variable aws_vpc_cidr {
-  description = "CIDR block for the VPC"
-}
+#variable aws_vpc_cidr {
+#  description = "CIDR block for the VPC"
+#}
 
 variable tfc_org {
   default = "mattygrecgrec"
