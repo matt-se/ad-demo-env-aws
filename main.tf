@@ -22,3 +22,10 @@ provider "aws" {
 
 
 provider "hcp" {}
+
+
+provider "vault" {
+  token = hcp_vault_cluster_admin_token.example.token
+  address = hcp_valut_cluster.example.public_endpoint
+  namespace = "admin"
+}
