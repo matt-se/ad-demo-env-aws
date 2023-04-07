@@ -8,7 +8,7 @@ resource "aws_vpc" "vpc" {
 }
 
 data "aws_arn" "main" {
-  arn = aws_vpc.main.arn
+  arn = aws_vpc.vpc.arn
 }
 
 
@@ -21,7 +21,7 @@ resource "hcp_hvn" "hvn" {
 
 
 resource "aws_vpc_peering_connection_accepter" "main" {
-  vpc_peering_connection_id = hcp_aws_network_peering.example_peering.provider_peering_id
+  vpc_peering_connection_id = hcp_aws_network_peering.example.provider_peering_id
   auto_accept               = true
 }
 
