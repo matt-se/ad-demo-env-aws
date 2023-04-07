@@ -10,9 +10,10 @@ output "hcp_valut_public_url" {
   value = hcp_vault_cluster.example.public_endpoint
 }
 
+
 resource "hcp_vault_cluster_admin_token" "example" {
-  cluster_id = "test-vault-cluster"
-  sensitive  = true
+  cluster_id = hcp_vault_cluster.example.cluster_id
+  #sensitive  = true
 }
 
 output "hcp_vault_cluster_admin_token" {
