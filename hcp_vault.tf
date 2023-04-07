@@ -6,7 +6,7 @@ resource "hcp_vault_cluster" "example" {
   public_endpoint = true
 }
 
-output "hcp_valut_public_url" {
+output "hcp_vault_public_url" {
   value = hcp_vault_cluster.example.public_endpoint
 }
 
