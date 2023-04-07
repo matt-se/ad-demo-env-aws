@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
   enable_dns_support = true
   tags = {
-    Name = "${var.environment_name}_vpc"
+    Name = "${var.environment_name}-vpc"
   }
 }
 
@@ -13,7 +13,7 @@ data "aws_arn" "main" {
 
 
 resource "hcp_hvn" "hvn" {
-  hvn_id = "${var.environment_name}_hvn"
+  hvn_id = "${var.environment_name}-hvn"
   cloud_provider = "aws"
   region = "us-east-1"
   cidr_block = var.hcp_hvn_cidr
@@ -29,7 +29,7 @@ resource "aws_vpc_peering_connection_accepter" "main" {
 // Create a network peering between the HVN and the AWS VPC
 resource "hcp_aws_network_peering" "example" {
   hvn_id          = hcp_hvn.hvn.hvn_id
-  peering_id      = "${var.environment_name}_peering"
+  peering_id      = "${var.environment_name}-peering"
   peer_vpc_id     = aws_vpc.vpc.id
   peer_account_id = aws_vpc.vpc.owner_id
   peer_vpc_region = data.aws_arn.main.region
