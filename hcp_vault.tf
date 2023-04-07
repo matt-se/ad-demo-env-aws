@@ -12,6 +12,7 @@ output "hcp_valut_public_url" {
 
 resource "hcp_vault_cluster_admin_token" "example" {
   cluster_id = "test-vault-cluster"
+  sensitive  = true
 }
 
 output "hcp_vault_cluster_admin_token" {
