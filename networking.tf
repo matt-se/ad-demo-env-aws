@@ -1,3 +1,6 @@
+
+###### AWS
+
 resource "aws_vpc" "vpc" {
   cidr_block = var.aws_vpc_cidr
   enable_dns_hostnames = true
@@ -12,6 +15,27 @@ data "aws_arn" "main" {
 }
 
 
+resource "aws_subnet" "foo" {
+  vpc_id            = aws_vpc.main.id
+  availability_zone = "us-east-1a"
+  cidr_block        = "172.31.0.0/24"
+}
+
+resource "aws_subnet" "bar" {
+  vpc_id            = aws_vpc.main.id
+  availability_zone = "us-east-1b"
+  cidr_block        = "172.31.1.0/24"
+}
+
+
+resource "aws_vpc_peering_connection_accepter" "main" {
+  vpc_peering_connection_id = hcp_aws_network_peering.example.provider_peering_id
+  auto_accept               = true
+}
+
+
+####### HCP
+
 resource "hcp_hvn" "hvn" {
   hvn_id = "${var.environment_name}-hvn"
   cloud_provider = "aws"
@@ -20,10 +44,6 @@ resource "hcp_hvn" "hvn" {
 }
 
 
-resource "aws_vpc_peering_connection_accepter" "main" {
-  vpc_peering_connection_id = hcp_aws_network_peering.example.provider_peering_id
-  auto_accept               = true
-}
 
 
 // Create a network peering between the HVN and the AWS VPC
