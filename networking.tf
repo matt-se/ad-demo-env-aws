@@ -16,13 +16,13 @@ data "aws_arn" "main" {
 
 
 resource "aws_subnet" "foo" {
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = aws_vpc.vpc.id
   availability_zone = "us-east-1a"
   cidr_block        = "172.31.0.0/24"
 }
 
 resource "aws_subnet" "bar" {
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = aws_vpc.vpc.id
   availability_zone = "us-east-1b"
   cidr_block        = "172.31.1.0/24"
 }
