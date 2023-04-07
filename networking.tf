@@ -10,6 +10,14 @@ resource "aws_vpc" "vpc" {
   }
 }
 
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "igw_${var.environment_name}"
+  }
+}
+
+
 data "aws_arn" "main" {
   arn = aws_vpc.vpc.arn
 }
@@ -33,9 +41,37 @@ resource "aws_vpc_peering_connection_accepter" "main" {
   auto_accept               = true
 }
 
+resource "aws_route_table" "rtb_public" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "${var.environment_name}_rtb_public"
+  }
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+}
+
+
+resource "aws_route_table_association" "rta_subnet_public" {
+  subnet_id      = aws_subnet.foo.id
+  route_table_id = aws_route_table.rtb_public.id
+}
+
+resource "aws_route_table_association" "rta_subnet_public2" {
+  subnet_id      = aws_subnet.bar.id
+  route_table_id = aws_route_table.rtb_public.id
+}
+
+
+
+
+
+
+
+
 
 ####### HCP
-
 resource "hcp_hvn" "hvn" {
   hvn_id = "${var.environment_name}-hvn"
   cloud_provider = "aws"
