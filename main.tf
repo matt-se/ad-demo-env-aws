@@ -25,7 +25,7 @@ provider "hcp" {}
 
 
 provider "vault" {
-  token = hcp_vault_cluster_admin_token.example.token
-  address = hcp_vault_cluster.example.public_endpoint
+  #token = hcp_vault_cluster_admin_token.example.token
+  #address = hcp_vault_cluster.example.public_endpoint
   namespace = "admin"
 }
