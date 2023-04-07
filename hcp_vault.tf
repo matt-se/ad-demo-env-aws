@@ -20,7 +20,7 @@ output "hcp_vault_cluster_admin_token" {
   sensitive  = true
 }
 
-/*
+
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
     url         =  aws_directory_service_directory.ad.access_url
@@ -30,9 +30,4 @@ resource "vault_ldap_auth_backend" "ldap" {
     discoverdn  = false
     groupdn     = "OU=Groups,DC=example,DC=org"
     groupfilter = "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))"
-}*/
-
-
-resource "vault_namespace" "dumdum" {
-  path = "dumdum"
 }
