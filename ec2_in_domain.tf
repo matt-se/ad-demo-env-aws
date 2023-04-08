@@ -33,7 +33,7 @@ resource "aws_instance" "windows" {
       "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"& {",
       "  # Multi-line PowerShell script",
       "  Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools",
-      "  $secureSafeModePassword = ConvertTo-SecureString ${var.ad_admin_password} -AsPlainText -Force"
+      "  $secureSafeModePassword = ConvertTo-SecureString ${var.ad_admin_password} -AsPlainText -Force",
       "  Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath 'C:\Windows\NTDS' -DomainMode 'Win2012R2' -DomainName ${var.ad_domain_name} -DomainNetbiosName ${var.ad_netBIOS_name} -ForestMode 'Win2012R2' -InstallDns:$true -LogPath 'C:\Windows\NTDS' -NoRebootOnCompletion:$false -SysvolPath 'C:\Windows\SYSVOL' -Force:$true -SafeModeAdministratorPassword $secureSafeModePassword",
       "}\""
     ]
