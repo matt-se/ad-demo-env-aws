@@ -15,12 +15,13 @@ resource "aws_directory_service_directory" "ad" {
 }
 
 
-/*
+// add some AD objects to the new domain.  Use the instance that was created and joined to do this.
 resource "ad_ou" "o" { 
     name = "top-org"
-    path = "dc=corp,dc=notexample,dc=com"
+    path = "dc=mattygrecgrec,dc=com"
     description = "OU for tests"
     protected = false
+    depends_on = [aws_instance.ad_instance]
 }
 
 resource "ad_ou" "groupz" {
@@ -28,8 +29,9 @@ resource "ad_ou" "groupz" {
   path        = ad_ou.o.path
   description = ad_ou.o.description
   protected   = false
+  depends_on = [aws_instance.ad_instance]
 }
-*/
+
 
 
 

@@ -24,10 +24,10 @@ output "hcp_vault_cluster_admin_token" {
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
     url         =  aws_directory_service_directory.ad.access_url
-    userdn      = "OU=Users,OU=Accounts,DC=example,DC=org"
+    userdn      = "OU=Users,OU=Accounts,DC=mattygrecgrec,DC=com"
     userattr    = "sAMAccountName"
-    upndomain   = "EXAMPLE.ORG"
+    upndomain   = var.ad_domain_name
     discoverdn  = false
-    groupdn     = "OU=Groups,DC=example,DC=org"
+    groupdn     = "OU=Groups,DC=mattygrecgrec,DC=org"
     groupfilter = "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))"
 }
