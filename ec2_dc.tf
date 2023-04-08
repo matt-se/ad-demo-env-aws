@@ -22,6 +22,7 @@ resource "aws_instance" "windows" {
   vpc_security_group_ids      = [aws_security_group.sg_all.id]
   associate_public_ip_address = true
   user_data = data.template_file.windows_ad.rendered
+  get_password_data     =   "true"
   tags = {
     Name = "windows_${var.environment_name}"
     owner = var.owner
@@ -31,13 +32,14 @@ resource "aws_instance" "windows" {
   connection {
       type        = "winrm"
       user        = var.ad_admin_username
-      password    = var.ad_admin_password
+      password    = ${rsadecrypt(self.password_data,var.windows_private_key)}
       host        = self.public_ip
       https       = true
       insecure    = true
       timeout     = "10m"
+      agent      = false
     }
-    
+
   provisioner "remote-exec" {
     inline = [
       "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"& {",
