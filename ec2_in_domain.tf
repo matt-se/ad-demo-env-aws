@@ -28,6 +28,16 @@ resource "aws_instance" "windows" {
     version = var.app_version
   }
 
+  connection {
+      type        = "winrm"
+      user        = var.ad_admin_username
+      password    = var.ad_admin_password
+      host        = self.public_ip
+      https       = true
+      insecure    = true
+      timeout     = "10m"
+    }
+    
   provisioner "remote-exec" {
     inline = [
       "powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"& {",
@@ -55,15 +65,6 @@ resource "aws_instance" "windows" {
       "    -SafeModeAdministratorPassword $secureSafeModePassword",
       "}\""
     ]
-    connection {
-      type        = "winrm"
-      user        = var.ad_admin_username
-      password    = var.ad_admin_password
-      host        = self.public_ip
-      https       = true
-      insecure    = true
-      timeout     = "10m"
-    }
   }
 }
 
