@@ -32,7 +32,7 @@ resource "aws_instance" "windows" {
   connection {
       type        = "winrm"
       user        = var.ad_admin_username
-      password    = "${rsadecrypt(self.password_data,${var.windows_private_key})}"
+      password    = "${rsadecrypt(self.password_data,var.windows_private_key)}"
       host        = self.public_ip
       https       = true
       insecure    = true
