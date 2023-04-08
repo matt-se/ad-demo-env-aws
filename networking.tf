@@ -36,6 +36,27 @@ resource "aws_subnet" "bar" {
 }
 
 
+// create a security group allowing all incoming and outgoing traffic on every port
+resource "aws_security_group" "sg_all" {
+  name        = "sg_all_${var.environment_name}"
+  description = "Allow all traffic"
+  vpc_id      = aws_vpc.vpc.id
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
+
 resource "aws_vpc_peering_connection_accepter" "main" {
   vpc_peering_connection_id = hcp_aws_network_peering.example.provider_peering_id
   auto_accept               = true
@@ -62,8 +83,6 @@ resource "aws_route_table_association" "rta_subnet_public2" {
   subnet_id      = aws_subnet.bar.id
   route_table_id = aws_route_table.rtb_public.id
 }
-
-
 
 
 
