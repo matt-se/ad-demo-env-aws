@@ -21,7 +21,7 @@ resource "ad_ou" "o" {
     path = "dc=mattygrecgrec,dc=com"
     description = "OU for tests"
     protected = false
-    depends_on = [aws_instance.ad_instance]
+    depends_on = [aws_instance.windows]
 }
 
 resource "ad_ou" "groupz" {
@@ -29,7 +29,7 @@ resource "ad_ou" "groupz" {
   path        = ad_ou.o.path
   description = ad_ou.o.description
   protected   = false
-  depends_on = [aws_instance.ad_instance]
+  depends_on = [aws_instance.windows]
 }
 
 
