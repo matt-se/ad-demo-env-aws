@@ -15,6 +15,7 @@ resource "aws_directory_service_directory" "ad" {
 }
 
 
+/*
 resource "ad_ou" "o" { 
     name = "top-org"
     path = "dc=corp,dc=notexample,dc=com"
@@ -28,7 +29,7 @@ resource "ad_ou" "groupz" {
   description = ad_ou.o.description
   protected   = false
 }
-
+*/
 
 
 
