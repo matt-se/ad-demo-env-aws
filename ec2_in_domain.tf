@@ -28,6 +28,13 @@ resource "aws_instance" "windows" {
     version = var.app_version
   }
   
+  user_data = <<EOF
+<powershell>
+Add-Computer -DomainName '${var.ad_name}' -NewName 'instance_to_configure_ad' -Credential (New-Object -TypeName PSCredential -ArgumentList '${var.ad_admin_name}',(ConvertTo-SecureString -String '${var.ad_admin_password}' -AsPlainText -Force)[0]) -Restart
+</powershell>
+EOF
+
+
   connection {
       type        = "winrm"
       #user        = var.windows_key_user

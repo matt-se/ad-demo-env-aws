@@ -44,3 +44,15 @@ variable "owner" {
 variable "app_version" {
   default     = "0.1"
 }
+
+variable "ad_admin_password" {
+  default     = "SuperSecretPassw0rd"
+}
+
+variable "ad_admin_username" {
+  default     = "Administrator"
+}
+
+variable "ad_domain_name" {
+  default     = "mattygrecgrec.com"
+}
