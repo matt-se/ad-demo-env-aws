@@ -46,7 +46,7 @@ variable "app_version" {
 }
 
 variable "ad_admin_password" {
-  default     = "SuperSecretPassw0rd"
+  default     = "SuperSecretPassw0rd!@"
 }
 
 variable "ad_admin_username" {
