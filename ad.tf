@@ -1,3 +1,4 @@
+/*
 resource "aws_directory_service_directory" "ad" {
   name     = var.ad_domain_name
   password = var.ad_admin_password
@@ -13,10 +14,10 @@ resource "aws_directory_service_directory" "ad" {
     Project = "${var.environment_name}-ad"
   }
 }
-
+*/
 
 // add some AD objects to the new domain.  Use the instance that was created and joined to do this.
-
+/*
 resource "ad_ou" "o" { 
     name = "top-org"
     path = "dc=mattygrecgrec,dc=com"
@@ -25,7 +26,6 @@ resource "ad_ou" "o" {
     depends_on = [aws_instance.windows]
 }
 
-/*
 resource "ad_ou" "groupz" {
   name        = "groupz"
   path        = ad_ou.o.path
@@ -38,9 +38,7 @@ resource "ad_ou" "groupz" {
 
 
 
-
-
-
+/*
 output "ad_dns_ip" {
   value = aws_directory_service_directory.ad.dns_ip_addresses
 }
@@ -61,5 +59,5 @@ output "ad_url" {
   value = aws_directory_service_directory.ad.access_url
 }
 
-
+*/
 

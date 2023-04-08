@@ -56,3 +56,7 @@ variable "ad_admin_username" {
 variable "ad_domain_name" {
   default     = "mattygrecgrec.com"
 }
+
+variable "ad_netBIOS_name" {
+  default     = "MATTYGREC"
+}

@@ -31,7 +31,7 @@ provider "vault" {
 }
 
 
-
+/*
 provider "ad" {
   winrm_hostname         = aws_instance.windows.public_ip
   winrm_username         = var.ad_admin_username
@@ -43,3 +43,4 @@ provider "ad" {
   winrm_proto            = "https"
   winrm_pass_credentials = true
 }
+*/
