@@ -31,7 +31,7 @@ provider "vault" {
 }
 
 provider "ad" {
-  winrm_hostname = aws_instance.ad_instance.public_ip
+  winrm_hostname = aws_instance.windows.public_ip
   winrm_username = var.ad_admin_username
   winrm_password = var.ad_admin_password
 }
