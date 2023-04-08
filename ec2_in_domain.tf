@@ -23,7 +23,7 @@ resource "aws_instance" "windows" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "${var.app_prefix}_windows_${var.environment}"
+    Name = "windows_${var.environment_name}"
     owner = var.owner
     version = var.app_version
   }
