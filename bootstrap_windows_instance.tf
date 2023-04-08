@@ -29,9 +29,6 @@ Install-ADDSForest `
   -SafeModeAdministratorPassword $secureSafeModePassword
 
 # The server will reboot automatically once the installation process is complete
-
-
-
 </powershell>
 EOF
 }
