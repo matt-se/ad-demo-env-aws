@@ -1,6 +1,6 @@
 resource "aws_directory_service_directory" "ad" {
-  name     = var.ad_name
-  password = var.ad_password
+  name     = var.ad_domain_name
+  password = var.ad_admin_password
   edition  = "Standard"
   type     = "MicrosoftAD"
 
