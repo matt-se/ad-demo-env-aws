@@ -30,8 +30,16 @@ provider "vault" {
   namespace = "admin"
 }
 
+
+
 provider "ad" {
-  winrm_hostname = aws_instance.windows.public_ip
-  winrm_username = var.ad_admin_username
-  winrm_password = var.ad_admin_password
+  winrm_hostname         = aws_instance.windows.public_ip
+  winrm_username         = var.ad_admin_username
+  winrm_password         = var.ad_admin_password
+  krb_realm              = var.ad_domain_name
+  #krb_conf               = "${path.module}/krb5.conf"
+  krb_spn                = "winserver1"
+  winrm_port             = 5986
+  winrm_proto            = "https"
+  winrm_pass_credentials = true
 }
