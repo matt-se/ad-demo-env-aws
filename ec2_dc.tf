@@ -46,7 +46,7 @@ resource "aws_instance" "windows" {
       agent      = false
     } */
   user_data_replace_on_change = true
-  user_data_base64 = "${file("installAD.txt")}"
+  user_data = "${file("installAD.txt")}"
 }
 
 
