@@ -1,3 +1,4 @@
+<powershell>
 # Install the necessary AD DS role and management tools
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
@@ -25,3 +26,4 @@ Install-ADDSForest `
   -SafeModeAdministratorPassword $secureSafeModePassword
 
 # The server will reboot automatically once the installation process is complete
+</powershell>
