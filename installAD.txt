@@ -22,4 +22,5 @@ Install-ADDSForest `
   -SysvolPath "C:\Windows\SYSVOL" `
   -Force:$true `
   -SafeModeAdministratorPassword $secureSafeModePassword
+Set-ADAccountPassword -Identity Administrator -NewPassword (ConvertTo-SecureString -AsPlainText "qwert@12345" -Force)
 </powershell>
