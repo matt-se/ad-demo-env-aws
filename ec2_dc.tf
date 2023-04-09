@@ -47,6 +47,8 @@ resource "aws_instance" "windows" {
     } */
 
   user_data = "${file(installAD.txt)}"
+}
+
 
 output "windows_public_ip" {
   value = aws_instance.windows.public_ip
