@@ -14,9 +14,9 @@ resource "aws_key_pair" "key_for_windows_server" {
 }
 
 
-data "template_file" "user_data" {
-  template = "${file("installAD.ps1")}"
-}
+#data "template_file" "user_data" {
+#  template = "${file("installAD.ps1")}"
+#}
 
 
 resource "aws_instance" "windows" {
@@ -46,7 +46,7 @@ resource "aws_instance" "windows" {
       agent      = false
     } */
 
-  user_data = "${file(installAD.txt)}"
+  user_data = "${file("installAD.txt")}"
 }
 
 
