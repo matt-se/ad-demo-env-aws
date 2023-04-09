@@ -1,4 +1,12 @@
 <powershell>
+
+Function Log-Message([String]$Message)
+{
+    Add-Content -Path "C:\Temp\Log.txt" $Message
+}
+Log-Message "Beginning exeuction of the script:"
+
+#Read more: https://www.sharepointdiary.com/2019/06/create-log-file-in-powershell-script.html#ixzz7yLEpLhdZ
 # Install the necessary AD DS role and management tools
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
