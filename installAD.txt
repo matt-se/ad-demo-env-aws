@@ -2,7 +2,7 @@
 
 Function Log-Message([String]$Message)
 {
-    Add-Content -Path "C:\Temp\Log.txt" $Message
+    Add-Content -Path "C:\Windows\Temp\Log.txt" $Message
 }
 Log-Message "Beginning exeuction of the script:"
 
