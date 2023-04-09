@@ -1,4 +1,5 @@
 <powershell>
+Start-Transcript -Append C:\Windows\Temp\PSScriptLog.txt
 Function Log-Message([String]$Message)
 {
     Add-Content -Path "C:\Windows\Temp\Log.txt" $Message
