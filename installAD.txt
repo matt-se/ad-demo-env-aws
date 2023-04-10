@@ -12,19 +12,29 @@ $netBIOSName = "MATTYGRECGREC"
 $safeModePassword = "YourSafeModePassword@!1231"
 $secureSafeModePassword = ConvertTo-SecureString $safeModePassword -AsPlainText -Force
 #Log-Message "install AD Forest:"
-#Install-ADDSForest `
-  -CreateDnsDelegation:$false `
-  -DatabasePath "C:\Windows\NTDS" `
-  -DomainMode "Win2012R2" `
-  -DomainName $domainName `
-  -DomainNetbiosName $netBIOSName `
-  -ForestMode "Win2012R2" `
-  -InstallDns:$true `
-  -LogPath "C:\Windows\NTDS" `
-  -NoRebootOnCompletion:$false `
-  -SysvolPath "C:\Windows\SYSVOL" `
-  -Force:$true `
-  -SafeModeAdministratorPassword $secureSafeModePassword
+#Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName $domainName -DomainNetbiosName $netBIOSName -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword $secureSafeModePassword
+Log-Message "$secureSafeModePassword"
+
+$Params = @{
+CreateDnsDelegation = $false
+DatabasePath = 'C:\Windows\NTDS'
+DomainMode = 'WinThreshold'
+DomainName = 'mattygrecgrec.com'
+DomainNetbiosName = 'MATTYGRECGREC'
+ForestMode = 'WinThreshold'
+InstallDns = $true
+LogPath = 'C:\Windows\NTDS'
+NoRebootOnCompletion = $true
+SafeModeAdministratorPassword = $secureSafeModePassword
+SysvolPath = 'C:\Windows\SYSVOL'
+Force = $true
+}
+
+#Install-ADDSForest @Params
+
+
+
 Log-Message "Update password:"
 #Set-ADAccountPassword -Identity Administrator -NewPassword (ConvertTo-SecureString -AsPlainText "qwert@12345" -Force)
+#Restart-Computer
 </powershell>
