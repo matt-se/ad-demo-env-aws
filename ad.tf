@@ -5,3 +5,10 @@ resource "ad_ou" "o" {
     protected = false
 }
 
+resource "ad_group" "groupz" {
+  name             = "var.name"
+  sam_account_name = var.sam_account_name
+  scope            = "global"
+  category         = "security"
+  container        = ad_ou.o.dn
+}
