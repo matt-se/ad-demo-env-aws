@@ -34,7 +34,7 @@ provider "vault" {
 provider "ad" {
   winrm_hostname = aws_instance.windows.public_ip
   winrm_username = var.ad_admin_username
-  winrm_password = rsadecryptaws_instance.windows.password_data,file("dales-dead-bug_frontend_windows_dev_keypair.pem"))
+  winrm_password = rsadecrypt(aws_instance.windows.password_data,file("dales-dead-bug_frontend_windows_dev_keypair.pem"))
   winrm_use_ntlm = true
   winrm_port     = 5986
   winrm_proto    = "https"
