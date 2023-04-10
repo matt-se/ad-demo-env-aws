@@ -5,11 +5,13 @@ Function Log-Message([String]$Message)
     Add-Content -Path "C:\Windows\Temp\Log.txt" $Message
 }
 Log-Message "Beginning exeuction of the script:"
+Log-Message "install AD feature:"
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 $domainName = "mattygrecgrec.com"
 $netBIOSName = "MATTYGRECGREC"
 $safeModePassword = "YourSafeModePassword@!1231"
 $secureSafeModePassword = ConvertTo-SecureString $safeModePassword -AsPlainText -Force
+Log-Message "install AD Forest:"
 Install-ADDSForest `
   -CreateDnsDelegation:$false `
   -DatabasePath "C:\Windows\NTDS" `
@@ -23,5 +25,6 @@ Install-ADDSForest `
   -SysvolPath "C:\Windows\SYSVOL" `
   -Force:$true `
   -SafeModeAdministratorPassword $secureSafeModePassword
+Log-Message "Update password:"
 Set-ADAccountPassword -Identity Administrator -NewPassword (ConvertTo-SecureString -AsPlainText "qwert@12345" -Force)
 </powershell>
