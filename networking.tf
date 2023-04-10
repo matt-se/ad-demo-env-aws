@@ -1,6 +1,5 @@
 
 ###### AWS
-
 resource "aws_vpc" "vpc" {
   cidr_block = var.aws_vpc_cidr
   enable_dns_hostnames = true
@@ -17,11 +16,9 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-
 data "aws_arn" "main" {
   arn = aws_vpc.vpc.arn
 }
-
 
 resource "aws_subnet" "foo" {
   vpc_id            = aws_vpc.vpc.id
