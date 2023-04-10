@@ -12,3 +12,16 @@ resource "ad_group" "groupz" {
   category         = "security"
   container        = ad_ou.o.dn
 }
+
+resource "ad_user" "userz" {
+  principal_name    = "userz"
+  sam_account_name  = "USERZ"
+  display_name      = "Terraform Test User"
+  initial_password  = "Password"
+  container         = ad_ou.o.dn
+}
+
+resource "ad_group_member" "groupz_userz" {
+  group = ad_group.groupz.dn
+  member = ad_user.userz.dn
+}
