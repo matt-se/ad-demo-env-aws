@@ -21,7 +21,9 @@ resource "ad_user" "userz" {
   container         = ad_ou.o.dn
 }
 
-resource "ad_group_member" "groupz_userz" {
-  group = ad_group.groupz.dn
-  member = ad_user.userz.dn
+resource "ad_group_membership" "groupz_userz" {
+  group_id = ad_group.groupz.id
+  group_members = [
+    ad_user.userz.id
+  ]
 }
