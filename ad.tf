@@ -6,8 +6,8 @@ resource "ad_ou" "o" {
 }
 
 resource "ad_group" "groupz" {
-  name             = "var.name"
-  sam_account_name = var.sam_account_name
+  name             = "groupz"
+  sam_account_name = "GROUPZ"
   scope            = "global"
   category         = "security"
   container        = ad_ou.o.dn

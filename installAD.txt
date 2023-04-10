@@ -1,5 +1,9 @@
 <powershell>
 Start-Transcript -Append C:\Windows\Temp\PSScriptLog.txt
+winrm set winrm/config/client '@{AllowUnencrypted="true"}' 
+winrm set winrm/config/service/auth '@{Basic="true"}'
+netsh advfirewall firewall add rule name="WinRM-HTTP" dir=in localport=5986 protocol=TCP action=allow
+netsh advfirewall firewall add rule name="WinRM-HTTP" dir=in localport=5985 protocol=TCP action=allow
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 $domainName = "mattygrecgrec.com"
 $netBIOSName = "MATTYGRECGREC"
