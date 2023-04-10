@@ -26,8 +26,7 @@ resource "aws_instance" "windows" {
   key_name = aws_key_pair.key_for_windows_server.key_name
   vpc_security_group_ids      = [aws_security_group.sg_all.id]
   associate_public_ip_address = true
-  #user_data = data.template_file.windows_ad.rendered
-  #get_password_data     =   "true"
+  get_password_data     =   "true"
   tags = {
     Name = "windows_${var.environment_name}"
     owner = var.owner

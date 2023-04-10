@@ -1,20 +1,10 @@
 <powershell>
 Start-Transcript -Append C:\Windows\Temp\PSScriptLog.txt
-Function Log-Message([String]$Message)
-{
-    Add-Content -Path "C:\Windows\Temp\Log.txt" $Message
-}
-Log-Message "Beginning exeuction of the script:"
-Log-Message "install AD feature:"
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 $domainName = "mattygrecgrec.com"
 $netBIOSName = "MATTYGRECGREC"
 $safeModePassword = "YourSafeModePassword@!1231"
 $secureSafeModePassword = ConvertTo-SecureString $safeModePassword -AsPlainText -Force
-#Log-Message "install AD Forest:"
-#Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\Windows\NTDS" -DomainMode "Win2012R2" -DomainName $domainName -DomainNetbiosName $netBIOSName -ForestMode "Win2012R2" -InstallDns:$true -LogPath "C:\Windows\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\Windows\SYSVOL" -Force:$true -SafeModeAdministratorPassword $secureSafeModePassword
-Log-Message "$secureSafeModePassword"
-
 $Params = @{
 CreateDnsDelegation = $false
 DatabasePath = 'C:\Windows\NTDS'
@@ -30,7 +20,4 @@ Force = $true
 }
 Log-Message "install ad"
 Install-ADDSForest @Params
-#Log-Message "Update password:"
-#Set-ADAccountPassword -Identity Administrator -NewPassword (ConvertTo-SecureString -AsPlainText "qwert@12345" -Force)
-#Restart-Computer
 </powershell>
