@@ -6,7 +6,7 @@ Function Log-Message([String]$Message)
 }
 Log-Message "Beginning exeuction of the script:"
 Log-Message "install AD feature:"
-#Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 $domainName = "mattygrecgrec.com"
 $netBIOSName = "MATTYGRECGREC"
 $safeModePassword = "YourSafeModePassword@!1231"
