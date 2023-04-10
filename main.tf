@@ -33,7 +33,7 @@ provider "vault" {
 
 provider "ad" {
   #winrm_hostname = aws_instance.windows.public_ip
-  winrm_hostname = 44.204.59.30
+  winrm_hostname = "44.204.59.30"
   winrm_username = var.ad_admin_username
   winrm_password = rsadecrypt(aws_instance.windows.password_data,file("dales-dead-bug_frontend_windows_dev_keypair.pem"))
   winrm_use_ntlm = true
