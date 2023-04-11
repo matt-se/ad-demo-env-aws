@@ -35,4 +35,5 @@ b. Log into the AWS console to get the Windows password (doormat aws --role <rol
 c. set the ad_controller_public_ip variable in the workspace.
   
 d. Set the VAULT_TOKEN, VAULT_NAMESPACE, and VAULT_ADDR variables in the workspace.  Get this from HCP.
+  
 e. run it
