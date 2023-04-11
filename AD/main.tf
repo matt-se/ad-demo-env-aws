@@ -9,7 +9,7 @@ terraform {
   required_providers {
     ad = {
       source  = "hashicorp/ad"
-      required_version = ">= 0.4.4"
+      version = ">= 0.4.4"
     }
     vault = {
       source  = "hashicorp/vault"
@@ -18,6 +18,15 @@ terraform {
   }
   required_version = ">= 1.2.0"
 }
+
+
+
+provider "vault" {
+  token = hcp_vault_cluster_admin_token.example.token
+  address = hcp_vault_cluster.example.vault_public_endpoint_url
+  namespace = "admin"
+}
+
 
 
 provider "ad" {
