@@ -19,7 +19,7 @@ resource "ad_group" "groupy" {
   sam_account_name = "GROUPY"
   scope            = "global"
   category         = "security"
-  container        = "OU=Groups,DC=${var.ad_domain},DC=com"
+  container        = ad_ou.o.dn
 }
 
 
