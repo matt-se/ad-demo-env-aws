@@ -6,7 +6,7 @@ resource "vault_ldap_auth_backend" "ldap" {
 
     binddn      = "CN=Administrator,CN=Users,DC=${var.ad_domain},DC=com"
     bindpass    = var.windows_password
-    userdn      = "OU=Users,OU=Accounts,DC=${var.ad_domain},DC=com"
+    userdn      = "OU=Users,DC=${var.ad_domain},DC=com"
     userattr    = "sAMAccountName"
     userfilter  = "(objectClass=person)"
     
