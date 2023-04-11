@@ -1,6 +1,6 @@
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
-    url         =  aws_instance.windows.public_ip
+    url         =  var.ad_controller_public_ip
     userdn      = "OU=Users,OU=Accounts,DC=mattygrecgrec,DC=com"
     userattr    = "sAMAccountName"
     upndomain   = var.ad_domain_name
