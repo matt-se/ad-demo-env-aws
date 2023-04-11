@@ -31,20 +31,23 @@ resource "ad_user" "userz" {
   container         = ad_ou.o.dn
 }
 
+resource "ad_user" "usery" {
+  principal_name    = "bobby"
+  sam_account_name  = "BPBBY"
+  display_name      = "Terraform Test User"
+  initial_password  = "Password1234#@!#$"
+  container         = ad_ou.o.dn
+}
+
+
+
+
 resource "ad_group_membership" "groupz_userz" {
   group_id = ad_group.groupz.id
-  group_members = [
-    ad_user.userz.id
-  ]
+  group_members = [ad_user.userz.id]
 }
 
-
-/*
-resource "ad_user" "userz" {
-  principal_name    = "userz"
-  sam_account_name  = "USERZ"
-  display_name      = "Terraform Test User"
-  initial_password  = "Password"
-  container         = "OU=Users,OU=Accounts,DC=mattygrecgrec,DC=com"
+resource "ad_group_membership" "groupy_usery" {
+  group_id = ad_group.groupy.id
+  group_members = [ad_user.usery.id]
 }
-*/
