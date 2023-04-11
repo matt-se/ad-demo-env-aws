@@ -74,7 +74,7 @@ resource "aws_route_table_association" "rta_subnet_public" {
 
 ####### HCP
 resource "hcp_hvn" "hvn" {
-  hvn_id = "${var.environment_name}-hvn"
+  hvn_id = "hvn-${var.environment_name}"
   cloud_provider = "aws"
   region = "us-east-1"
   cidr_block = var.hcp_hvn_cidr
