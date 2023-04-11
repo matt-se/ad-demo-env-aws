@@ -2,7 +2,7 @@
 
 This repo is meant to give you a way to test AD/LDAP functionality with Vault.
 
-The result of this is a new EC2 instance that runs as a stand-alone domain controller, a new HCP Vault cluster, and a finctioning connection between the two.
+The result of this is a new EC2 instance that runs as a stand-alone domain controller, a new HCP Vault cluster, and a functioning connection between the two.
 You can use the Terraform provider for AD to add new security groups and users, and then map those to Vault.  You can also use the Vault LDAP secrets engine against this domain controller.
 
 This is a two-step process to set this up, as we have to bootstrap the domain controller using user_data, so we have to wait for a full reboot and initialization before we can do anything else.
