@@ -13,12 +13,6 @@ resource "aws_key_pair" "key_for_windows_server" {
   public_key = var.windows_public_key
 }
 
-
-#data "template_file" "user_data" {
-#  template = "${file("installAD.ps1")}"
-#}
-
-
 resource "aws_instance" "windows" {
   ami           = data.aws_ami.windows-2022.id
   instance_type = "t2.micro"
