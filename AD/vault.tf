@@ -8,4 +8,5 @@ resource "vault_ldap_auth_backend" "ldap" {
     groupdn     = "OU=Groups,DC=${var.ad_domain},DC=com"
     groupfilter = "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))"
     insecure_tls = true
+    description = "LDAP auth backend for ${var.ad_domain}.com"
 }
