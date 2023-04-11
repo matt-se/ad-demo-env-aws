@@ -35,7 +35,7 @@ provider "ad" {
   winrm_username = "Administrator"
   #winrm_password = rsadecrypt(aws_instance.windows.password_data,file("dales-dead-bug_frontend_windows_dev_keypair.pem"))
   winrm_password = var.windows_password
-  winrm_use_ntlm = true
+ # winrm_use_ntlm = true
   winrm_port     = 5985
   winrm_proto    = "http"
   winrm_insecure = true
