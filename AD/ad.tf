@@ -1,4 +1,4 @@
-/*
+
 resource "ad_ou" "o" { 
     name = "top_org"
     path = "dc=mattygrecgrec,dc=com"
@@ -28,8 +28,9 @@ resource "ad_group_membership" "groupz_userz" {
     ad_user.userz.id
   ]
 }
-*/
 
+
+/*
 resource "ad_user" "userz" {
   principal_name    = "userz"
   sam_account_name  = "USERZ"
@@ -37,3 +38,4 @@ resource "ad_user" "userz" {
   initial_password  = "Password"
   container         = "OU=Users,OU=Accounts,DC=mattygrecgrec,DC=com"
 }
+*/
