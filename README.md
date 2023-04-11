@@ -7,7 +7,7 @@ You can use the Terraform provider for AD to add new security groups and users, 
 
 This is a two-step process to set this up, as we have to bootstrap the domain controller using user_data, so we have to wait for a full reboot and initialization before we can do anything else.
 
-
+-----
 
 Process 1: build infr
 
@@ -24,7 +24,7 @@ e. create a new keypair (ssh-keygen -t rsa), set the windows_public_key and wind
 f. run it, this will give you a public IP for the domain controller.
 
 
-
+-----
 
 Process 2: Add AD objects and connect to Vault
 
@@ -35,5 +35,4 @@ b. Log into the AWS console to get the Windows password (doormat aws --role <rol
 c. set the ad_controller_public_ip variable in the workspace.
   
 d. Set the VAULT_TOKEN, VAULT_NAMESPACE, and VAULT_ADDR variables in the workspace.  Get this from HCP.
-  
-d. run it
+e. run it
