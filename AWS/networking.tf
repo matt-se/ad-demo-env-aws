@@ -26,12 +26,6 @@ resource "aws_subnet" "foo" {
   cidr_block        = "172.31.0.0/24"
 }
 
-resource "aws_subnet" "bar" {
-  vpc_id            = aws_vpc.vpc.id
-  availability_zone = "us-east-1b"
-  cidr_block        = "172.31.1.0/24"
-}
-
 
 // create a security group allowing all incoming and outgoing traffic on every port
 resource "aws_security_group" "sg_all" {
@@ -76,15 +70,6 @@ resource "aws_route_table_association" "rta_subnet_public" {
   route_table_id = aws_route_table.rtb_public.id
 }
 
-resource "aws_route_table_association" "rta_subnet_public2" {
-  subnet_id      = aws_subnet.bar.id
-  route_table_id = aws_route_table.rtb_public.id
-}
-
-
-
-
-
 
 
 ####### HCP
@@ -94,7 +79,6 @@ resource "hcp_hvn" "hvn" {
   region = "us-east-1"
   cidr_block = var.hcp_hvn_cidr
 }
-
 
 
 
