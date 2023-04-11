@@ -1,7 +1,7 @@
 
 resource "ad_ou" "o" { 
     name = "top_org"
-    path = "dc=mattygrecgrec,dc=com"
+    path = "dc=${var.ad_domain},dc=com"
     description = "OU for tests"
     protected = false
 }
@@ -13,6 +13,15 @@ resource "ad_group" "groupz" {
   category         = "security"
   container        = ad_ou.o.dn
 }
+
+resource "ad_group" "groupy" {
+  name             = "groupy"
+  sam_account_name = "GROUPY"
+  scope            = "global"
+  category         = "security"
+  container        = "OU=Groups,DC=${var.ad_domain},DC=com"
+}
+
 
 resource "ad_user" "userz" {
   principal_name    = "matt"

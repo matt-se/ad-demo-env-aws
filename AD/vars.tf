@@ -9,6 +9,12 @@ variable ad_domain_name {
   default     = "mattygrecgrec.com"
 }
 
+variable ad_domain {
+  description = "The domain of the AD controller"
+  type        = string
+  default     = "mattygrecgrec"
+}
+
 variable windows_password {
   description = "The password for the Windows VM.  You'll need to get this from the AWS portal."
   type        = string
