@@ -10,16 +10,30 @@ This is a two-step process to set this up, as we have to bootstrap the domain co
 
 
 Process 1: build infr
+
 a. clone this repo
+
 b. set up a TFC workspace with /AWS as the root.  
+
 c. create an HCP service principal and set the credentials as env vars in thw workspace (HCP_CLIENT_ID & HCP_CLIENT_SECRET)
+
 d. set the AWS creds as environmental vars in this workspace (use doormat)
+
 e. create a new keypair (ssh-keygen -t rsa), set the windows_public_key and windows_private_key variable values.
+
 f. run it, this will give you a public IP for the domain controller.
 
 
+
+
 Process 2: Add AD objects and connect to Vault
+
 a. Once the AD controller is INITIALIZED, create another workspace and set the root to /AD
+
 b. Log into the AWS console to get the Windows password (doormat aws --role <role> console).  Go to EC2 Instances > Connect > RDP client > Get password > upload your private key and decrypt the password.  Set this as the windows_password variable in the workspace.
+  
 c. set the ad_controller_public_ip variable in the workspace.
+  
+d. Set the VAULT_TOKEN, VAULT_NAMESPACE, and VAULT_ADDR variables in the workspace.  Get this from HCP.
+  
 d. run it
