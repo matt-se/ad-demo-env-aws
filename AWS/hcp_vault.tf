@@ -21,6 +21,8 @@ output "hcp_vault_cluster_admin_token" {
 }
 
 
+
+/*
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
     url         =  aws_instance.windows.public_ip
@@ -31,3 +33,4 @@ resource "vault_ldap_auth_backend" "ldap" {
     groupdn     = "OU=Groups,DC=mattygrecgrec,DC=com"
     groupfilter = "(&(objectClass=group)(member:1.2.840.113556.1.4.1941:={{.UserDN}}))"
 }
+*/
