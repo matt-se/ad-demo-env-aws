@@ -1,3 +1,4 @@
+/*
 resource "ad_ou" "o" { 
     name = "top_org"
     path = "dc=mattygrecgrec,dc=com"
@@ -26,4 +27,13 @@ resource "ad_group_membership" "groupz_userz" {
   group_members = [
     ad_user.userz.id
   ]
+}
+*/
+
+resource "ad_user" "userz" {
+  principal_name    = "userz"
+  sam_account_name  = "USERZ"
+  display_name      = "Terraform Test User"
+  initial_password  = "Password"
+  container         = "OU=Users,OU=Accounts,DC=mattygrecgrec,DC=com"
 }
