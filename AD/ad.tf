@@ -15,8 +15,8 @@ resource "ad_group" "groupz" {
 }
 
 resource "ad_user" "userz" {
-  principal_name    = "userz"
-  sam_account_name  = "USERZ"
+  principal_name    = "matt"
+  sam_account_name  = "MATT"
   display_name      = "Terraform Test User"
   initial_password  = "Password1234#@!#$"
   container         = ad_ou.o.dn
