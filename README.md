@@ -5,7 +5,7 @@ This repo is meant to give you a way to test AD/LDAP functionality with Vault.
 The result of this is a new EC2 instance that runs as a stand-alone domain controller, a new HCP Vault cluster, and a functioning connection between the two.
 You can use the Terraform provider for AD to add new security groups and users, and then map those to Vault.  You can also use the Vault LDAP secrets engine against this domain controller.
 
-This is a two-step process to set this up, as we have to bootstrap the domain controller using user_data, so we have to wait for a full reboot and initialization before we can do anything else.
+Its a two-step process to set this up.  We have to bootstrap the domain controller using user_data, then for a full reboot and initialization before we can do anything else.
 
 -----
 
@@ -15,13 +15,13 @@ a. clone this repo
 
 b. set up a TFC workspace with /AWS as the root.  
 
-c. create an HCP service principal and set the credentials as env vars in thw workspace (HCP_CLIENT_ID & HCP_CLIENT_SECRET)
+c. create a HCP service principal and set the credentials as env vars in thw workspace (HCP_CLIENT_ID & HCP_CLIENT_SECRET)
 
 d. set the AWS creds as environmental vars in this workspace (use doormat)
 
 e. create a new keypair (ssh-keygen -t rsa), set the windows_public_key and windows_private_key variable values.
 
-f. run it, this will give you a public IP for the domain controller.
+f. run it, this will output the public IP for the domain controller.
 
 
 -----
