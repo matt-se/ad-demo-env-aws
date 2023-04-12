@@ -27,17 +27,7 @@ resource "aws_instance" "windows" {
     version = var.app_version
   }
  
-  /*
-  connection {
-      type        = "winrm"
-      user        = var.ad_admin_username
-      password    = rsadecrypt(self.password_data,file("dales-dead-bug_frontend_windows_dev_keypair.pem"))
-      host        = self.public_ip
-      https       = true
-      insecure    = true
-      timeout     = "10m"
-      agent      = false
-    } */
+
   user_data_replace_on_change = true
   user_data = "${file("installAD.txt")}"
 }
