@@ -27,7 +27,7 @@ resource "ad_user" "userz" {
   principal_name    = "matt"
   sam_account_name  = "MATT"
   display_name      = "Terraform Test User"
-  initial_password  = "Password1234#@!#$"
+  initial_password  = "≈"
   container         = ad_ou.o.dn
 }
 
