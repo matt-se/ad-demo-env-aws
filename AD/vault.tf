@@ -1,6 +1,9 @@
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
     url         =  "ldap://${var.ad_controller_public_ip}"
+    request_timeout = 30
+    starttls = false
+    case_sensitive_names = false
     insecure_tls = false
     description = "LDAP auth backend for ${var.ad_domain}.com"
 
@@ -16,4 +19,7 @@ resource "vault_ldap_auth_backend" "ldap" {
     groupfilter = "(&(objectClass=person)(uid={{.Username}}))"
     groupattr   = "memberOf"
     deny_null_bind = true
+
+
+    token_policies = ["default"]
 }

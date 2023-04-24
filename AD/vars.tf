@@ -9,6 +9,14 @@ variable ad_domain_name {
   default     = "mattygrecgrec.com"
 }
 */
+
+variable ad_container {
+  description = "The container for the AD objects"
+  type        = string
+  default     = "OU=Users,DC=mattygrecgrec,DC=com"
+}
+
+
 variable ad_domain {
   description = "The domain of the AD controller"
   type        = string
