@@ -1,7 +1,6 @@
 resource "vault_ldap_auth_backend" "ldap" {
     path        = "ldap"
     url         =  "ldap://${var.ad_controller_public_ip}"
-    request_timeout = 30
     starttls = false
     case_sensitive_names = false
     insecure_tls = false
