@@ -13,7 +13,7 @@ variable ad_domain_name {
 variable ad_container {
   description = "The container for the AD objects"
   type        = string
-  default     = "OU=Users,DC=mattygrecgrec,DC=com"
+  default     = "CN=Users,DC=mattygrecgrec,DC=com"
 }
 
 
