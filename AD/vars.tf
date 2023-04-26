@@ -24,7 +24,7 @@ variable ad_domain {
 }
 
 variable windows_password {
-  description = "The password for the Windows VM.  You'll need to get this from the AWS portal."
+  description = "The password for the Windows VM.  You'll need to get this from the AWS portal (ECS -> Instances -> Windows VM -> Connect -> Get Password)"
   type        = string
   }
 

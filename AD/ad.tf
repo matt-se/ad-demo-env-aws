@@ -41,6 +41,14 @@ resource "ad_user" "bobby" {
   container         = var.ad_container
 }
 
+resource "ad_user" "sa-1" {
+  principal_name = "sa-1"
+  sam_account_name = "SA1"
+  display_name = "Service Account 1"
+  initial_password = "Password1234#@!#$"
+  container = var.ad_container
+}
+
 
 
 resource "ad_group_membership" "groupz_userz" {
